@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .background {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            background-color: gainsboro;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #game-container {
+            width: 1000px;
+            height: 800px;
+            background-color: aqua;
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card{
+            height:150px;
+            width:200px;
+            background-color: yellow;
+            margin:25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div>
+            <p>Memory Game</p>
+            <p>Instructions: You know it. It's in the Title</p>
+        </div>
+        <div id="game-container">
+            <div class="card">
+                
+            </div>
+        </div>
+    </div>
+<script>
+    const pairData={
+        cardCount:16,
+        constructColorPair:function(){
+            return ['black','red','green','orange','pink','purple','gray','blue']
+        }
+    }
+    function SetupEnvironment(){
+        var card=document.getElementsByClassName('card');
+        var gameContainer=document.getElementById('game-container')
+        for(let i=0;i<pairData.cardCount-1;i++){
+            let clonedCard=card[0].cloneNode(true);
+            gameContainer.appendChild(clonedCard)
+        }
+    }
+
+
+    function SetupCards(){
+        var cards=document.getElementsByClassName('card')
+        var pairMetaData=pairData.constructColorPair()
+        console.log(pairMetaData)
+
+        for(let i=0;i<pairData.cardCount;i++){
+            cards[i].style.backgroundColor=pairMetaData[3]
+        }
+    }
+    SetupEnvironment();
+    SetupCards();
+</script>
+</body>
+
+</html>
